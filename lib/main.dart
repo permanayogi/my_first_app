@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_first_app/list_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -49,7 +50,15 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             SizedBox(height: 20),
             ElevatedButton(
-                onPressed: _changeMessage, child: const Text('Click Me'))
+                onPressed: _changeMessage, child: const Text('Click Me')),
+            ElevatedButton(
+              //Button for list screen view
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ListScreen()));
+              },
+              child: const Text('Go to List Screen'),
+            )
           ],
         ),
       ),
