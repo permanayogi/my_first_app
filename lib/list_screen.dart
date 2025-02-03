@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ListScreen extends StatelessWidget {
+  const ListScreen({super.key});
   static const List<String> items = [
     //create list for items
     'Apple',
@@ -9,8 +10,6 @@ class ListScreen extends StatelessWidget {
     'Mango',
     'Grapes',
   ];
-
-  const ListScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
