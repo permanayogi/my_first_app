@@ -18,11 +18,43 @@ class _ListScreenState extends State<ListScreen> {
     'Grapes',
   ];
 
+  final TextEditingController _textController = TextEditingController();
+
   void _deleteItem(int index) {
     //method for delete item
     setState(() {
       items.removeAt(index);
     });
+  }
+
+  void _addItem() {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: const Text('Add New Item'),
+            content: TextField(
+              controller: _textController,
+              decoration: const InputDecoration(hintText: 'Enter item name'),
+            ),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Text('Cancel')),
+              TextButton(
+                  onPressed: () {
+                    setState(() {
+                      items.add(_textController.text);
+                    });
+                    _textController.clear();
+                    Navigator.pop(context);
+                  },
+                  child: const Text('Add'))
+            ],
+          );
+        });
   }
 
   @override
@@ -70,6 +102,10 @@ class _ListScreenState extends State<ListScreen> {
               ),
             );
           }),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _addItem,
+        child: const Icon(Icons.add),
+      ),
     );
   }
 }
