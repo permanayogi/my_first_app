@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_first_app/list_screen.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -12,6 +12,21 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'My First Flutter App',
+      theme: ThemeData(
+          primaryColor: Colors.deepPurple, //primary color
+          colorScheme: ColorScheme.fromSwatch().copyWith(
+            secondary: Colors.amber, //acccent color
+          ),
+          textTheme: const TextTheme(
+              headlineLarge: TextStyle(
+                  fontSize: 24, fontWeight: FontWeight.bold), //appbar title
+              bodyLarge: TextStyle(
+                  fontSize: 16, color: Colors.black87) //list item text
+              ),
+          appBarTheme: const AppBarTheme(
+            centerTitle: true,
+            elevation: 4,
+          )),
       home: HomeScreen(),
     );
   }
